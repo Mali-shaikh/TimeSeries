@@ -1,9 +1,9 @@
 """
-Streamlit app: timeseries_app.py
-
-- Choose ticker among AAPL, GOOGL, TSLA
-- Performs EDA, MA(7), decomposition, ADF on Volume, ARIMA(1,0,0) on Close (forecast next 30 business days)
-- No download buttons (per your request)
+Streamlit app that:
+- Lets user choose ticker from AMZN, AAPL, GOOGL, TSLA
+- Runs EDA, 7-day MA, decomposition, ADF on Volume
+- Fits ARIMA(1,0,0) on Close and Volume (backtest + forecast)
+- Displays results interactively and allows downloading CSVs/plots
 """
 
 import csv
@@ -27,7 +27,7 @@ st.set_page_config(page_title="Time Series Analysis & Forecasting", layout="wide
 
 # Sidebar controls
 st.sidebar.header("Settings")
-TICKER = st.sidebar.selectbox("Select ticker", options=["AAPL", "GOOGL", "TSLA"], index=0)
+TICKER = st.sidebar.selectbox("Select ticker", options=["AMZN","AAPL", "GOOGL", "TSLA"], index=0)
 YEARS = st.sidebar.slider("Years of history", min_value=1, max_value=10, value=3)
 HOLDOUT_DAYS = st.sidebar.slider("Holdout (days) for backtest", min_value=10, max_value=90, value=30)
 FUTURE_DAYS = st.sidebar.slider("Forecast horizon (days)", min_value=7, max_value=90, value=30)
@@ -205,4 +205,3 @@ st.write("Notes:")
 st.write("- ARIMA is fitted on Close only (as required).")
 st.write("- Close is used for stationarity check (ADF).")
 st.write("- Forecasts use business-day frequency for plotting; actual trading calendar can differ.")
-# streamlit run timeseries_app.py

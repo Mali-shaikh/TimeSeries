@@ -2,7 +2,7 @@
 timeseries_analysis_forecasting_clean.py
 
 - Option A implementation: ARIMA(1,0,0) trained on Close only and forecasts next 30 business days of Close.
-- Volume is used only for ADF stationarity test (no forecasting for Volume).
+- Close is used only for ADF stationarity test (due toforecasting for Volume).
 - Designed to be run as a regular Python script (prints outputs and saves plots to `ts_outputs/`).
 """
 
@@ -24,8 +24,8 @@ from sklearn.metrics import mean_absolute_error
 # ---------------------------
 # USER PARAMETERS (change as needed)
 # ---------------------------
-TICKERS = ["AAPL", "GOOGL", "TSLA"]  # will loop through these if you want, default set
-SELECTED_TICKER = "AAPL"             # change to "GOOGL" or "TSLA" if you like
+TICKERS = ["AAPL","AMZN", "GOOGL", "TSLA"]  # will loop through these if you want, default set
+SELECTED_TICKER = "GOOGL"             # change to "GOOGL" or "TSLA" if you like
 YEARS = 3
 HOLDOUT_DAYS = 30
 FUTURE_DAYS = 30
