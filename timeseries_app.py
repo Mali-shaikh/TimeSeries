@@ -9,7 +9,7 @@ Streamlit app that:
 import csv
 import warnings
 
-from matplotlib import ticker
+import matplotlib.ticker as ticker
 warnings.filterwarnings("ignore")
 
 import datetime as dt
