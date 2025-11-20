@@ -1,8 +1,8 @@
 """
-timeseries_analysis_forecasting_clean.py
+timeseries_analysis_forecasting.py
 
 - Option A implementation: ARIMA(1,0,0) trained on Close only and forecasts next 30 business days of Close.
-- Close is used only for ADF stationarity test (due toforecasting for Volume).
+- Volume is used only for ADF stationarity test (due to forecasting on close).
 - Designed to be run as a regular Python script (prints outputs and saves plots to `ts_outputs/`).
 """
 
@@ -217,4 +217,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
